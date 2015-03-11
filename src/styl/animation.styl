@@ -1,0 +1,80 @@
+/**
+ * @file animation.styl
+ * @author wangyisheng@baidu.com (wangyisheng)
+ * @description
+ * 动画声明
+ * fade因为比较特殊用JS实现了
+ **/
+
+@keyframes rt-rotate
+    from
+        transform: rotate(0)
+    to
+        transform: rotate(360deg)
+
+/* 背景音乐图标动画 */
+@keyframes music-unit-0
+    0%
+        height: rem(10)
+    25%
+        height: rem(15)
+    50%
+        height: rem(10)
+    75%
+        height: rem(5)
+    100%
+        height: rem(0)
+
+@keyframes music-unit-1
+    0%
+        height: rem(25)
+    25%
+        height: rem(20)
+    50%
+        height: rem(15)
+    75%
+        height: rem(10)
+    100%
+        height: rem(15)
+
+@keyframes music-unit-2
+    0%
+        height: rem(20)
+    25%
+        height: rem(25)
+    50%
+        height: rem(20)
+    75%
+        height: rem(15)
+    100%
+        height: rem(10)
+
+@keyframes music-unit-3
+    0%
+        height: rem(10)
+    25%
+        height: rem(5)
+    50%
+        height: rem(10)
+    75%
+        height: rem(15)
+    100%
+        height: rem(10)
+
+// drop up icon animation
+@keyframes drop-up
+    from
+        opacity: 1
+        transform: rotateX(-40deg)
+    to
+        opacity: 0
+        transform: rotateX(0deg) translateY(rem(-10))
+
+@keyframes drop-left
+    from
+        opacity: 1
+        transform: rotateY(-40deg)
+    to
+        opacity: 0
+        transform: rotateY(0deg) translateX(rem(-10))
+

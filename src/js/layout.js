@@ -40,10 +40,6 @@ define(function (require) {
 
     // 给slides设置一些宽高，并读取每个幻灯片的配置
     var slidesInner = dom.query('.rt-slides-inner');
-    // dom.setStyles(slidesInner, {
-    //     'width': winWidth + 'px',
-    //     'height': winHeight + 'px'
-    // });
     var slideArr = [];
     var slideDomArr = dom.queryAll('.rt-slide', slidesInner);
     var resources = [];

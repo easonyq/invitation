@@ -1,0 +1,69 @@
+/**
+ * @file slide1.styl
+ * @author wangyisheng@baidu.com (wangyisheng)
+ * @description
+ * 第一张样式
+ **/
+
+ @keyframes rotate-y
+    from
+        transform: rotateY(0)
+    to
+        transform: rotateY(360deg)
+
+.slide-1
+    background: url('http://m.web.7192.com/diy/css/eic/27/bg1.jpg') no-repeat
+    background-size: 100%
+
+    .back
+        background: url('http://m.web.7192.com/diy/css/eic/27/cover.png') no-repeat
+        background-size: 100%
+        size: rem(250) rem(281)
+        margin: rem(20) auto
+        animation: rotate-y 2s ease-in-out
+
+    .name-wrapper
+        margin: rem(5) auto
+        overflow: hidden
+        width: rem(195)
+
+        span
+            color: #fff
+            font-size: rem(14)
+            display: inline-block
+            text-align: center
+            float: left
+
+        .heart
+            background: url('http://m.web.7192.com/diy/css/eic/27/bai.png') no-repeat
+            background-size: 100%
+            size: rem(15) rem(15)
+            margin: rem(2) rem(5)
+
+    .date-wrapper
+        size: rem(151) rem(50)
+        overflow: hidden
+        margin: rem(15) auto
+        transform: scale(1.2)
+
+        div
+            float: left
+            text-align: center
+            color: #fff
+            font-weight: bold
+
+        .small
+            size: rem(32) rem(26)
+            margin: rem(12) rem(10)
+            line-height: rem(26)
+            font-size: rem(12)
+            background: url('http://m.web.7192.com/diy/css/eic/27/tit_bg.png') no-repeat
+            background-size: 100%
+
+        .big
+            size: rem(44) rem(50)
+            line-height: rem(40)
+            font-size: rem(24)
+            background: url('http://m.web.7192.com/diy/css/eic/27/flag.png') no-repeat
+            background-size: 100%
+

@@ -10,10 +10,8 @@ define(function (require) {
     var tap = require('./tools/tap');
     var util = require('./tools/util');
     var Transition = require('./tools/transition');
-    var Slide = require('./slide');
-    var Music = require('./music');
-    var globalConfig = require('./globalConfig');
-    var weixin = require('./platforms/weixin');
+    // var Music = require('./music');
+    // var weixin = require('./platforms/weixin');
 
     // 这里先计算全局font-size。
     // 以iphone4为基准，320*480，基础font-size = 16px，因此width = 20rem, height = 30rem
@@ -40,90 +38,50 @@ define(function (require) {
         }
     }
 
-    // 读取配置
-    globalConfig.init();
-    var globalConfigContent = globalConfig.get();
-
     // 给slides设置一些宽高，并读取每个幻灯片的配置
     var slidesInner = dom.query('.rt-slides-inner');
-    dom.setStyles(slidesInner, {
-        'width': winWidth + 'px',
-        'height': winHeight + 'px'
-    });
+    // dom.setStyles(slidesInner, {
+    //     'width': winWidth + 'px',
+    //     'height': winHeight + 'px'
+    // });
     var slideArr = [];
     var slideDomArr = dom.queryAll('.rt-slide', slidesInner);
-    var transition = new Transition(slideArr);
     var resources = [];
     for (var i in slideDomArr) {
-        var slide = new Slide(slideDomArr[i]);
-        slide.setStyles({
+        var slide = slideDomArr[i];
+        dom.setStyles(slide, {
             'width': winWidth + 'px',
             'height': winHeight + 'px'
         });
         slideArr.push(slide);
-
-        var slideConfig = slide.getConfig();
-        slideConfig.backgroundImage && resources.push([slideConfig.backgroundImage]);
     }
-
-    // 设置第一页
-    var firstPageIndex = 1;
-    if (location.hash && !isNaN(location.hash.substr(1))) {
-        firstPageIndex = location.hash.substr(1);
-    }
-    transition.showPage(firstPageIndex);
+    var transition = new Transition(slideArr);
 
     // 滑动事件绑定
-    tap.register(slidesInner, globalConfigContent.direction);
-    if (globalConfigContent.direction === 'vertical') {
-        slidesInner.on('tap-bottom', function (e) {
-            transition.previous();
-        });
-        slidesInner.on('tap-top', function (e) {
-            transition.next();
-        });
-    } else {
-        slidesInner.on('tap-right', function (e) {
-            transition.previous();
-        });
-        slidesInner.on('tap-left', function (e) {
-            transition.next();
-        });
-    }
-
-    // 处理component链接
-    var links = dom.queryAll('.rt-link');
-    for (var i in links) {
-        // touchend模拟click
-        links[i].addEventListener('touchend', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            var target = this.getAttribute('data-target');
-            if (target && !isNaN(target)) {
-                transition.to(parseInt(target, 10));
-            }
-        });
-    }
+    tap.register(slidesInner);
+    slidesInner.on('tap-bottom', function (e) {
+        transition.previous();
+    });
+    slidesInner.on('tap-top', function (e) {
+        transition.next();
+    });
 
     // 设置背景音乐
-    if (globalConfigContent.backgroundMusic && globalConfigContent.backgroundMusic.url) {
-        var music = new Music(document.body);
-        music.init();
-    }
+    // if (globalConfigContent.backgroundMusic && globalConfigContent.backgroundMusic.url) {
+    //     var music = new Music(document.body);
+    //     music.init();
+    // }
 
-    weixin.register({
-        title: globalConfigContent.pName,
-        imgUrl: globalConfigContent.pImage,
-        description: globalConfigContent.description,
-        linkUrl: location.href
-    });
+    // weixin.register({
+    //     title: '王轶盛&杨追燕的新婚请帖',
+    //     imgUrl: 'http://img1.2345.com/duoteimg/qqTxImg/2012/04/09/13339423112520.jpg',
+    //     description: '王轶盛&杨追燕的新婚请帖',
+    //     linkUrl: location.href
+    // });
 
     // 所有准备工作完成，展现
-    util.load(resources[firstPageIndex], function () {
+    setTimeout(function () {
         dom.hide('.rt-loading');
         dom.show('.rt-slides');
-        resources.forEach(function (resource) {
-            util.load(resource);
-        });
-    });
+    }, 1000);
 });

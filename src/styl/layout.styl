@@ -23,21 +23,13 @@
 
 .rt-slides
     fixed: 0 0 0 0
-    .rt-slides-inner,
-    .rt-slide,
-    .rt-slide-real
+    .rt-slides-inner
         absolute: 0 _ _ 0
         width: rem(320)
+        transition: all 500ms ease
+    .rt-slide,
+        width: rem(320)
         height: rem(480)
-    .rt-slide
-        display: none
-
-.rt-component
-    absolute: 0 _ _ 0
-    a,.rt-link
-        display: block;
-        width: 100%
-        height : 100%
 
 .rt-background-music
     fixed: rem(5) rem(5) _ _

@@ -42,7 +42,6 @@ define(function (require) {
     var slidesInner = dom.query('.rt-slides-inner');
     var slideArr = [];
     var slideDomArr = dom.queryAll('.rt-slide', slidesInner);
-    var resources = [];
     for (var i in slideDomArr) {
         var slide = slideDomArr[i];
         dom.setStyles(slide, {
@@ -75,9 +74,37 @@ define(function (require) {
     //     linkUrl: location.href
     // });
 
+    wx.config({
+        // debug: true,
+        appId: 'wx853fd2be754191a3',
+        timestamp: 1426395529,
+        nonceStr: 'XCt9fEcE9fB63hYH',
+        signature: '2bec82cb0c4cad64d09d8f1a358ee9e9974d645c',
+        jsApiList: [
+            'onMenuShareTimeline',
+            'onMenuShareAppMessage',
+            'onMenuShareQQ',
+            'onMenuShareWeibo'
+        ]
+    });
+    wx.ready(function () {
+        wx.onMenuShareAppMessage({
+            title: '王轶盛&杨追燕的新婚请帖',
+            imgUrl: 'http://img1.2345.com/duoteimg/qqTxImg/2012/04/09/13339423112520.jpg',
+            description: '王轶盛&杨追燕诚意邀请您参加我们的婚礼！',
+            linkUrl: 'http://bs.baidu.com/weigou-baidu-com/base3.html'
+        });
+        wx.onMenuShareTimeline({
+            title: '王轶盛&杨追燕的新婚请帖',
+            imgUrl: 'http://img1.2345.com/duoteimg/qqTxImg/2012/04/09/13339423112520.jpg',
+            linkUrl: 'http://bs.baidu.com/weigou-baidu-com/base3.html'
+        });
+    });
+
     // 所有准备工作完成，展现
     setTimeout(function () {
         dom.hide('.rt-loading');
         dom.show('.rt-slides');
+        transition.start();
     }, 1000);
 });

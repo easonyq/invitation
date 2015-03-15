@@ -19,7 +19,7 @@ var pageEntries = 'html,htm,phtml,tpl,vm';
 var defineBcsUploaderProcessor = require('./tools/processors/BcsUploaderProcessor');
 
 exports.getProcessors = function () {
-    var outputDir = 'maliang-runtime-' + getDate();
+    var outputDir = 'wedding-invitation-' + getDate();
     var BcsUploaderProcessor = defineBcsUploaderProcessor();
 
     return [ 
@@ -56,7 +56,7 @@ exports.getProcessors = function () {
 
             files: [
                 'index.js',
-                'index.styl'
+                'index.styl',
             ]
         })
     ];

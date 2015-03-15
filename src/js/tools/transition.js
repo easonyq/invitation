@@ -10,12 +10,11 @@ define(function (require) {
     var Emitter = require('./emitter');
     var dom = require('./dom');
     var util = require('./util');
+    var customize = require('../customize/index');
 
     var isMoving = false;
     var MOVING_DELAY = 300;
     var activeSlideIndex = 0;
-
-    var dropIcon;
 
     function Transition(slideArr) {
         this.slideArr = slideArr;
@@ -26,29 +25,38 @@ define(function (require) {
         if (isMoving || activeSlideIndex >= this.slideArr.length - 1) {
             return;
         }
-        activeSlideIndex++;
-        move();
+        move(true);
     };
 
     Transition.prototype.previous = function () {
         if (isMoving || activeSlideIndex <= 0) {
             return;
         }
-        activeSlideIndex--;
-        move();
+        move(false);
     };
 
-    function move() {
+    Transition.prototype.start = function () {
+        customize.afterEnter(0);
+    };
+
+    function move(isNext) {
         isMoving = true;
+        customize.beforeLeave(activeSlideIndex);
+        if (isNext) {
+            activeSlideIndex++;
+        } else {
+            activeSlideIndex--;
+        }
         var slidesInner = dom.query('.rt-slides-inner');
         dom.setStyle(slidesInner, 'top', - activeSlideIndex * window.innerHeight + 'px');
         setTimeout(function () {
             isMoving = false;
+            customize.afterEnter(activeSlideIndex);
         }, 500);
     }
 
     function setDropIcon() {
-        dropIcon = dom.create('div');
+        var dropIcon = dom.create('div');
         dropIcon.className = 'drop-icon drop-up-icon';
         document.body.appendChild(dropIcon);
     }

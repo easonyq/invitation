@@ -5,31 +5,29 @@
  * 第一张样式
  **/
 
- @keyframes rotate-y
-    from
-        transform: rotateY(0)
-    to
-        transform: rotateY(360deg)
-
 .slide-1
     background: url('http://m.web.7192.com/diy/css/eic/27/bg1.jpg') no-repeat
     background-size: 100%
+    overflow: hidden
+    position: relative
 
     .back
         background: url('http://m.web.7192.com/diy/css/eic/27/cover.png') no-repeat
         background-size: 100%
         size: rem(250) rem(281)
         margin: rem(20) auto
-        animation: rotate-y 2s ease-in-out
+        opacity: 0
 
     .name-wrapper
         margin: rem(5) auto
         overflow: hidden
         width: rem(195)
+        opacity: 0
 
         span
             color: #fff
             font-size: rem(14)
+            line-height: rem(20)
             display: inline-block
             text-align: center
             float: left
@@ -45,6 +43,7 @@
         overflow: hidden
         margin: rem(15) auto
         transform: scale(1.2)
+        opacity: 0
 
         div
             float: left
@@ -67,3 +66,25 @@
             background: url('http://m.web.7192.com/diy/css/eic/27/flag.png') no-repeat
             background-size: 100%
 
+    .snow
+        absolute: rem(-20) _ _ _
+
+    .snow-1
+        size: rem(20) rem(20)
+        background: url('http://m.7192.com/static/zq/img/snow1.png') no-repeat
+        background-size: 100%
+        
+    .snow-2
+        size: rem(12) rem(12)
+        background: url('http://m.7192.com/static/zq/img/snow2.png') no-repeat
+        background-size: 100%
+
+    .snow-3
+        size: rem(10) rem(10)
+        background: url('http://m.7192.com/static/zq/img/snow3.png') no-repeat
+        background-size: 100%
+
+    .snow-4
+        size: rem(20) rem(20)
+        background: url('http://m.7192.com/static/zq/img/snow4.png') no-repeat
+        background-size: 100%

@@ -7,41 +7,33 @@
 
 define(function () {
     return {
-        register: function (options) {
-            // 发送给好友
-            document.addEventListener('WeixinJSBridgeReady', function () {
-                if (typeof WeixinJSBridge !== 'object'
-                    || typeof WeixinJSBridge.on !== 'function') {
-                    return;
-                }
-                WeixinJSBridge.on('menu:share:appmessage', function () {
-                    WeixinJSBridge.invoke('sendAppMessage',{
-                        "appid": 'wxc07a8481c9282211',
-                        "img_url": options.imgUrl,
-                        "link": options.linkUrl,
-                        "desc": options.description,
-                        "title": options.title
-                    }, function (res){
-                        alert('error here');
-                        alert(res.err_msg);
-                    });
+        register: function () {
+            wx.config({
+                // debug: true,
+                appId: 'wx853fd2be754191a3',
+                timestamp: 1426490767,
+                nonceStr: 'Wm3WZYTPz0wzccnW',
+                signature: '4755708a44aad5f5ca2516006c40eae9f8de40bb',
+                jsApiList: [
+                    'onMenuShareTimeline',
+                    'onMenuShareAppMessage',
+                    'onMenuShareQQ',
+                    'onMenuShareWeibo'
+                ]
+            });
+            wx.ready(function () {
+                wx.onMenuShareAppMessage({
+                    title: '王轶盛&杨追燕的新婚请帖',
+                    imgUrl: 'http://bs.baidu.com/weigou-baidu-com/8bd286127a41addd4a4a43d4ee9b0713.jpg',
+                    desc: '诚意邀请您参加我们的婚礼！2015年5月23日晚17:38于东骏海鲜酒家5楼',
+                    link: 'http://bs.baidu.com/weigou-baidu-com/wangyisheng/invitation.html'
                 });
-
-                // 分享到朋友圈
-                WeixinJSBridge.on('menu:share:timeline', function () {
-                    WeixinJSBridge.invoke('shareTimeline',{
-                        "appid": 'wxc07a8481c9282211',
-                        "img_url": options.imgUrl,
-                        "img_width": "150",
-                        "img_height": "150",
-                        "link": options.linkUrl,
-                        "desc": options.description,
-                        "title": options.title
-                    }, function (res){
-                        alert(res.err_msg);
-                    });
+                wx.onMenuShareTimeline({
+                    title: '王轶盛&杨追燕的新婚请帖',
+                    imgUrl: 'http://bs.baidu.com/weigou-baidu-com/8bd286127a41addd4a4a43d4ee9b0713.jpg',
+                    link: 'http://bs.baidu.com/weigou-baidu-com/wangyisheng/invitation.html'
                 });
-            }, false);
+            });
         }
     }
 });

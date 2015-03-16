@@ -9,7 +9,6 @@ define(function (require) {
     var dom = require('../tools/dom');
 
     var exports = {};
-    var timeoutArr;
     var snowInterval;
     var snowArr;
     var snowTimeoutArr;
@@ -44,21 +43,9 @@ define(function (require) {
     }
 
     exports.afterEnter = function () {
-        dom.setStyle('.back', 'animation', 'rt-fade-in 0.5s linear');
-        var backTimeout = setTimeout(function () {
-            dom.setStyle('.back', 'opacity', 1);
-        }, 500);
-
-        dom.setStyle('.name-wrapper', 'animation', 'rt-fade-in 0.5s linear 0.5s');
-        var nameTimeout = setTimeout(function () {
-            dom.setStyle('.name-wrapper', 'opacity', 1);
-        }, 1000);
-
-        dom.setStyle('.date-wrapper', 'animation', 'rt-fade-in 0.5s linear 1s');
-        var dateTimeout = setTimeout(function () {
-            dom.setStyle('.date-wrapper', 'opacity', 1);
-        }, 1500);
-        timeoutArr = [backTimeout, nameTimeout, dateTimeout];
+        dom.setStyle('.back', 'animation', 'rt-fade-in 0.5s linear forwards');
+        dom.setStyle('.name-wrapper', 'animation', 'rt-fade-in 0.5s linear 0.5s forwards');
+        dom.setStyle('.date-wrapper', 'animation', 'rt-fade-in 0.5s linear 1s forwards');
         snowInterval = setInterval(function () {
             generateSnow();
         }, 1000);
@@ -68,8 +55,7 @@ define(function (require) {
 
     function resetAnimation(element) {
         dom.setStyles(element, {
-            'animation': 'none',
-            'opacity': 0
+            'animation': 'none'
         });
     }
 
@@ -78,10 +64,6 @@ define(function (require) {
             resetAnimation('.back');
             resetAnimation('.name-wrapper');
             resetAnimation('.date-wrapper');
-            for (var i = 0; i < timeoutArr.length; i++) {
-                clearTimeout(timeoutArr[i]);
-            }
-            timeoutArr = [];
             var slideDiv = dom.query('.slide-1');
             for (var i = 0; i < snowArr.length; i++) {
                 slideDiv.removeChild(snowArr[i]);

@@ -11,7 +11,7 @@ define(function (require) {
     var util = require('./tools/util');
     var Transition = require('./tools/transition');
     // var Music = require('./music');
-    // var weixin = require('./platforms/weixin');
+    var weixin = require('./platforms/weixin');
 
     // 这里先计算全局font-size。
     // 以iphone4为基准，320*480，基础font-size = 16px，因此width = 20rem, height = 30rem
@@ -67,39 +67,7 @@ define(function (require) {
     //     music.init();
     // }
 
-    // weixin.register({
-    //     title: '王轶盛&杨追燕的新婚请帖',
-    //     imgUrl: 'http://img1.2345.com/duoteimg/qqTxImg/2012/04/09/13339423112520.jpg',
-    //     description: '王轶盛&杨追燕的新婚请帖',
-    //     linkUrl: location.href
-    // });
-
-    wx.config({
-        // debug: true,
-        appId: 'wx853fd2be754191a3',
-        timestamp: 1426395529,
-        nonceStr: 'XCt9fEcE9fB63hYH',
-        signature: '2bec82cb0c4cad64d09d8f1a358ee9e9974d645c',
-        jsApiList: [
-            'onMenuShareTimeline',
-            'onMenuShareAppMessage',
-            'onMenuShareQQ',
-            'onMenuShareWeibo'
-        ]
-    });
-    wx.ready(function () {
-        wx.onMenuShareAppMessage({
-            title: '王轶盛&杨追燕的新婚请帖',
-            imgUrl: 'http://img1.2345.com/duoteimg/qqTxImg/2012/04/09/13339423112520.jpg',
-            description: '王轶盛&杨追燕诚意邀请您参加我们的婚礼！',
-            linkUrl: 'http://bs.baidu.com/weigou-baidu-com/base3.html'
-        });
-        wx.onMenuShareTimeline({
-            title: '王轶盛&杨追燕的新婚请帖',
-            imgUrl: 'http://img1.2345.com/duoteimg/qqTxImg/2012/04/09/13339423112520.jpg',
-            linkUrl: 'http://bs.baidu.com/weigou-baidu-com/base3.html'
-        });
-    });
+    weixin.register(3);
 
     // 所有准备工作完成，展现
     setTimeout(function () {

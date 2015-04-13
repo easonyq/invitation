@@ -2,7 +2,7 @@
  * @file dom.js
  * @author wangyisheng@baidu.com (wangyisheng)
  * @description
- * 第一页脚本
+ * 封面脚本
  **/
 
 define(function (require) {

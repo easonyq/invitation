@@ -8,6 +8,8 @@
 
 define(function (require) {
     var slide1 = require('./slide1');
+    var slide2 = require('./slide2');
+    var slide3 = require('./slide3');
 
     var exports = {};
 
@@ -15,6 +17,10 @@ define(function (require) {
         switch(slideIndex) {
             case 0:
                 slide1.beforeLeave();
+            case 1:
+                slide2.beforeLeave();
+            case 2:
+                slide3.beforeLeave();
         }
     }
 
@@ -22,6 +28,10 @@ define(function (require) {
         switch(slideIndex) {
             case 0:
                 slide1.afterEnter();
+            case 1:
+                slide2.afterEnter();
+            case 2:
+                slide3.afterEnter();
         }
     }
 

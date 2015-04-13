@@ -67,7 +67,7 @@ define(function (require) {
     //     music.init();
     // }
 
-    weixin.register(3);
+    weixin.register();
 
     // 所有准备工作完成，展现
     setTimeout(function () {

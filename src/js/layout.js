@@ -10,8 +10,7 @@ define(function (require) {
     var tap = require('./tools/tap');
     var util = require('./tools/util');
     var Transition = require('./tools/transition');
-    // var Music = require('./music');
-    var weixin = require('./platforms/weixin');
+    var Music = require('./music');
 
     // 这里先计算全局font-size。
     // 以iphone4为基准，320*480，基础font-size = 16px，因此width = 20rem, height = 30rem
@@ -62,12 +61,8 @@ define(function (require) {
     });
 
     // 设置背景音乐
-    // if (globalConfigContent.backgroundMusic && globalConfigContent.backgroundMusic.url) {
-    //     var music = new Music(document.body);
-    //     music.init();
-    // }
-
-    weixin.register();
+    var music = new Music(document.body);
+    music.init();
 
     // 所有准备工作完成，展现
     setTimeout(function () {

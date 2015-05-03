@@ -9,24 +9,23 @@ define(function (require) {
 
     var dom = require('./tools/dom');
     var util = require('./tools/util');
-    var globalConfig = require('./globalConfig');
 
     function Music(root) {
         this.main = root;
-        this.config = globalConfig.get();
     }
 
     Music.prototype.init = function () {
         var audio = dom.create('audio');
-        audio.src = this.config.backgroundMusic.url;
-        audio.loop = this.config.backgroundMusic.repeat === 'infinite' ? true : false;
+        audio.src = 'http://bs.baidu.com/weigou-baidu-com/wangyisheng/Feel The Light.mp3';
+        audio.loop = true;
 
         var backgroundMusic = dom.create('div');
         dom.addClass(backgroundMusic, 'rt-background-music');
         this.main.appendChild(backgroundMusic);
 
         var musicAnimation = createMusicAnimation();
-        musicAnimation.pause();
+        audio.play();
+        // musicAnimation.pause();
         backgroundMusic.appendChild(musicAnimation.main);
         dom.show('.rt-background-music');
 

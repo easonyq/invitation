@@ -10,6 +10,7 @@ define(function (require) {
     var slide1 = require('./slide1');
     var slide2 = require('./slide2');
     var slide3 = require('./slide3');
+    var slide4 = require('./slide4');
 
     var exports = {};
 
@@ -24,6 +25,9 @@ define(function (require) {
             case 2:
                 slide3.beforeLeave();
                 break;
+            case 3:
+                slide4.beforeLeave();
+                break;
         }
     }
 
@@ -37,6 +41,9 @@ define(function (require) {
                 break;
             case 2:
                 slide3.afterEnter();
+                break;
+            case 3:
+                slide4.afterEnter();
                 break;
         }
     }

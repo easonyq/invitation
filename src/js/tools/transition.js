@@ -26,6 +26,9 @@ define(function (require) {
             return;
         }
         move(true);
+        if (activeSlideIndex === this.slideArr.length - 1) {
+            dom.hide('.drop-icon');
+        }
     };
 
     Transition.prototype.previous = function () {
@@ -33,6 +36,7 @@ define(function (require) {
             return;
         }
         move(false);
+        dom.show('.drop-icon');
     };
 
     Transition.prototype.start = function () {

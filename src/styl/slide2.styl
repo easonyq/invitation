@@ -11,6 +11,36 @@
     overflow: hidden
     position: relative
     
+    .rt-slide-real
+        width: rem(960)
+        absolute: 0 _ _ rem(-320)
+        transition: all 0.5s ease-in-out
+        
+    .slide-2-1,
+    .slide-2-2,
+    .slide-2-3
+        width: rem(320)
+        height: rem(480)
+        absolute: 0 _ _ 0
+        
+    .slide-2-1
+        img
+            size: rem(320) rem(480)
+        
+    .slide-2-2
+        left: rem(320)
+        
+    .slide-2-3
+        left: rem(640)
+        img
+            size: rem(320) rem(213.333)
+            margin-top: rem(133.333)
+        div
+            margin-top: rem(10)
+            text-align: center
+            color: white
+            font-size: rem(12)
+    
     .back
         background: url('http://bs.baidu.com/weigou-baidu-com/wangyisheng/swing.png') no-repeat
         background-size: 100%
@@ -27,20 +57,53 @@
             line-height: rem(30)
             font-size: rem(18)
             font-weight: bold
+            transition: all 0.5s ease-in-out
+            opacity: 0
             
         .hint
             font-size: rem(12)
             margin-top: rem(15)
+            transition: all 0.5s ease-in-out
+            opacity: 0
             
         p
             font-size: rem(16)
             line-height: rem(22)
             height: rem(22)
             margin-top: rem(8)
+            transition: all 0.5s ease-in-out
+            opacity: 0
             
         .time
             width: rem(140)
             margin: rem(8) auto 0
             border-top: rem(1) solid #fff
             border-bottom: rem(1) solid #fff
+            transition: all 0.5s ease-in-out
+            opacity: 0
+            
+    .button
+        margin-top: rem(30)
+        position: relative
+        size: 100% rem(50)
+        
+        div
+            size: rem(50) rem(50)
+            background-color: rgba(6, 171, 192, 0.3)
+            color: white
+            font-size: rem(20)
+            line-height: rem(25)
+            padding: rem(10)
+            transition: all 0.5s ease-in-out
+    
+        .left-button
+            border-radius: 0 rem(10) rem(10) 0
+            padding-left: rem(70)
+            absolute: 0 _ 0 rem(-130)
+            
+        .right-button
+            border-radius: rem(10) 0 0 rem(10)
+            padding-right: rem(70)
+            absolute: 0 rem(-130) 0 _
+        
         

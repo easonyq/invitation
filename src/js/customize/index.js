@@ -17,10 +17,13 @@ define(function (require) {
         switch(slideIndex) {
             case 0:
                 slide1.beforeLeave();
+                break;
             case 1:
                 slide2.beforeLeave();
+                break;
             case 2:
                 slide3.beforeLeave();
+                break;
         }
     }
 
@@ -28,10 +31,13 @@ define(function (require) {
         switch(slideIndex) {
             case 0:
                 slide1.afterEnter();
+                break;
             case 1:
                 slide2.afterEnter();
+                break;
             case 2:
                 slide3.afterEnter();
+                break;
         }
     }
 

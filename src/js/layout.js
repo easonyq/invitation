@@ -53,7 +53,7 @@ define(function (require) {
     var transition = new Transition(slideArr);
 
     // 滑动事件绑定
-    tap.register(slidesInner);
+    tap.register(slidesInner, 'vertical');
     slidesInner.on('tap-bottom', function (e) {
         transition.previous();
     });

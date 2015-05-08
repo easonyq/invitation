@@ -10,6 +10,7 @@ define(function (require) {
 
     var clickTimes = 0;
     var hasBindEvents = false;
+    var opacityTimeout;
     var exports = {};
 
     exports.afterEnter = function () {
@@ -20,6 +21,10 @@ define(function (require) {
         dom.setStyle('.ts', 'animation', 'rt-fade-in 0.5s linear 2s forwards');
         dom.setStyle('.slide-4 .hint', 'animation', 'rt-fade-in 0.5s linear 2.5s forwards');
         dom.setStyle('.feedback', 'animation', 'rt-fade-in 0.5s linear 3s forwards');
+        dom.setStyle('.feedback', 'animation', 'feedback 4s infinite linear 3.5s');
+        opacityTimeout = setTimeout(function () {
+            dom.setStyle('.feedback', 'opacity', '1');
+        }, 3000);
     };
 
     exports.beforeLeave = function () {
@@ -30,6 +35,7 @@ define(function (require) {
         resetAnimation('.ts');
         resetAnimation('.slide-4 .hint');
         resetAnimation('.feedback');
+        clearTimeout(opacityTimeout);
     };
 
     function bindEvents() {

@@ -54,9 +54,11 @@ define(function (require) {
         var slidesInner = dom.query('.rt-slides-inner');
         dom.setStyle(slidesInner, 'top', - activeSlideIndex * window.innerHeight + 'px');
         setTimeout(function () {
-            isMoving = false;
             customize.afterEnter(activeSlideIndex);
         }, 500);
+        setTimeout(function () {
+            isMoving = false;
+        }, 1000);
     }
 
     function setDropIcon() {

@@ -14,28 +14,30 @@ define(function (require) {
 
     // 这里先计算全局font-size。
     // 以iphone4为基准，320*480，基础font-size = 16px，因此width = 20rem, height = 30rem
-    var fontSizePercentage = 100;
     var winWidth = document.documentElement.clientWidth;
     var winHeight = document.documentElement.clientHeight;
-    if (winWidth != 320 || winHeight != 480) {
-        fontSizePercentage = Math.min(winWidth / 20, winHeight / 30) / 16 * 100;
-        dom.setStyle('html', 'font-size', fontSizePercentage.toFixed(2) + '%');
-        var isVertical = winWidth / 20 > winHeight / 30;
-        var slideRealArr = dom.queryAll('.rt-slide-real');
-        if (isVertical) {
-            var currentWidth = parseInt(dom.getStyle(slideRealArr[0], 'width'), 10);
-            var left = (winWidth - currentWidth) / 2;
-            for (var i in slideRealArr) {
-                dom.setStyle(slideRealArr[i], 'left', left + 'px');
-            }
-        } else {
-            var currentHeight = parseInt(dom.getStyle(slideRealArr[0], 'height'), 10);
-            var top = (winHeight - currentHeight) / 2;
-            for (var i in slideRealArr) {
-                dom.setStyle(slideRealArr[i], 'top', top + 'px');
-            }
-        }
-    }
+    // var fontSizePercentage = 100;
+    // if (winWidth != 320 || winHeight != 480) {
+    //     fontSizePercentage = Math.min(winWidth / 20, winHeight / 30) / 16 * 100;
+    //     dom.setStyle('html', 'font-size', fontSizePercentage.toFixed(2) + '%');
+    //     var isVertical = winWidth / 20 > winHeight / 30;
+    //     var slideRealArr = dom.queryAll('.rt-slide-real');
+    //     if (isVertical) {
+    //         var currentWidth = parseInt(dom.getStyle(slideRealArr[0], 'width'), 10);
+    //         var left = (winWidth - currentWidth) / 2;
+    //         for (var i in slideRealArr) {
+    //             dom.setStyle(slideRealArr[i], 'left', left + 'px');
+    //         }
+    //     } else {
+    //         var currentHeight = parseInt(dom.getStyle(slideRealArr[0], 'height'), 10);
+    //         var top = (winHeight - currentHeight) / 2;
+    //         for (var i in slideRealArr) {
+    //             dom.setStyle(slideRealArr[i], 'top', top + 'px');
+    //         }
+    //     }
+    // }
+    var fontSize = winWidth / 20;
+    document.documentElement.style.fontSize = fontSize + 'px';
 
     // 给slides设置一些宽高，并读取每个幻灯片的配置
     var slidesInner = dom.query('.rt-slides-inner');
@@ -52,7 +54,7 @@ define(function (require) {
     var transition = new Transition(slideArr);
 
     // 滑动事件绑定
-    tap.register(slidesInner, 'vertical');
+    tap.register(slidesInner);
     slidesInner.on('tap-bottom', function (e) {
         transition.previous();
     });

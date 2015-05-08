@@ -6,12 +6,15 @@
  **/
 
 .slide-3
+    background: url('http://bs.baidu.com/weigou-baidu-com/wangyisheng/bg2.jpg') no-repeat
+    background-size: 100%
     position: relative
+
     .rt-slide-real
-        width: rem(1600)
+        width: rem(7680)
         absolute: 0 _ _ 0
         overflow: hidden
-        transition: all 0.5s ease-in-out
+        transition: all 0.5s linear
         
         .our-story
             size: rem(157) rem(162)
@@ -19,13 +22,24 @@
             margin: rem(-78) rem(-81)
             opacity: 0
         
-        .photo,
-        .photo img
-            size: rem(320) rem(480)
-        
         .photo
+            size: rem(320) rem(480)
             float: left
             
+            img
+                width: 100%
+                &.h360
+                    margin-top: rem(150)
+                &.h427
+                    margin-top: rem(133)
+                &.h444
+                    margin-top: rem(129)
+                &.h480
+                    margin-top: rem(120)
+                &.h521
+                    margin-top: rem(110)
+                &.h684
+                    margin-top: rem(69)
 
 @keyframes out-story
     from

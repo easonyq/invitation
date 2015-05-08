@@ -16,7 +16,7 @@ define(function (require) {
 
     Music.prototype.init = function () {
         var audio = dom.create('audio');
-        audio.src = 'http://bs.baidu.com/weigou-baidu-com/wangyisheng/Feel The Light.mp3';
+        audio.src = 'http://bs.baidu.com/weigou-baidu-com/wangyisheng/invitation/Enrich Your Life.mp3';
         audio.loop = true;
 
         var backgroundMusic = dom.create('div');

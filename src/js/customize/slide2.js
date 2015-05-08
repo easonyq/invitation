@@ -57,7 +57,7 @@ define(function (require) {
                 isMoving = false;
             }, 500);
         });
-        tap.register(slideWrapper, 'horizontal');
+        tap.register(slideWrapper);
         slideWrapper.on('tap-left', function () {
             if (isMoving) {
                 return;

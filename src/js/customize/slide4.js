@@ -33,7 +33,7 @@ define(function (require) {
     };
 
     function bindEvents() {
-        dom.query('.hint').addEventListener('touchend', function () {
+        dom.query('.slide-4 .hint').addEventListener('touchend', function () {
             clickTimes++;
             if (clickTimes >= 5) {
                 alert('https://github.com/easonyq/invitation');

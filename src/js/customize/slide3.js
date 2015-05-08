@@ -9,7 +9,7 @@ define(function (require) {
     var dom = require('../tools/dom');
     var tap = require('../tools/tap');
 
-    var PHOTO_NUM = 4; // 不包括最后一张重复的
+    var PHOTO_NUM = 23; // 不包括最后一张重复的
     var WINDOW_WIDTH = window.innerWidth;
     var slideWrapper = dom.query('.slide-3 .rt-slide-real');
     var slideWrapperOffset = 0;
@@ -29,7 +29,7 @@ define(function (require) {
     };
 
     function bindEvents() {
-        tap.register(slideWrapper, 'horizontal');
+        tap.register(slideWrapper);
         slideWrapper.on('tap-left', function () {
             if (isMoving) {
                 return;
@@ -41,7 +41,7 @@ define(function (require) {
                     dom.setStyle(slideWrapper, 'left', 0);
                 }, 20);
                 setTimeout(function () {
-                    dom.setStyle(slideWrapper, 'transition', 'all 0.5s ease-in-out');
+                    dom.setStyle(slideWrapper, 'transition', 'all 0.5s linear');
                 }, 40);
                 setTimeout(function () {
                     dom.setStyle(slideWrapper, 'left', - WINDOW_WIDTH + 'px');
@@ -66,7 +66,7 @@ define(function (require) {
                     dom.setStyle(slideWrapper, 'left', - PHOTO_NUM * WINDOW_WIDTH + 'px');
                 }, 20);
                 setTimeout(function () {
-                    dom.setStyle(slideWrapper, 'transition', 'all 0.5s ease-in-out');
+                    dom.setStyle(slideWrapper, 'transition', 'all 0.5s linear');
                 }, 40);
                 setTimeout(function () {
                     dom.setStyle(slideWrapper, 'left', - (PHOTO_NUM - 1) * WINDOW_WIDTH + 'px');
